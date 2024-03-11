@@ -1,0 +1,201 @@
+/* background image qui est fixé derrière la page*/
+body {
+	background-image: url("../img/wallpaperflare.com_wallpaper.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+
+header {
+	height: 100vh;
+}
+
+/* mettre le titre principal sur la droite en grande taille */
+header h1 {
+	padding:1em;
+	font-size: 400%;
+	width: 8em;
+	text-align: right;
+	margin:auto;
+	margin-right: 0;
+	color: white;
+}
+
+
+/* décoration avec des images fixées entre les section pour donner un effet glissant*/
+.unplan {
+	background-image: url("../img/background2.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 10em;
+}
+
+.deuxplan {
+	background-image: url("../img/background3.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 10em;
+}
+
+.troisplan{
+	background-image: url("../img/background4.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 10em;
+}
+
+article {
+	margin:0;
+	line-height: 2.3rem;                        /* déffinir l'espace entre les lignes */
+}
+
+article h2 {
+	color: #0aade2;
+}
+
+article section {
+	background-color: rgb(2, 34, 45);
+	color: white;
+	padding:2em 5em;
+	box-shadow: 1px 5px 5px rgb(0 ,0 ,0 , 0.5);
+}
+
+/* premiere partie de l'article */
+article .texte {
+	display: grid;                            /* mettre la section "texte" et l'image sur la même ligne (section à droite image à gauche) */
+	grid-template-columns: 1fr 1fr;
+}
+
+
+/* partie 2 de l'article */
+#types {
+	order : -1;                               /* mettre la section "type" en 1er ordre pour le grid */
+}
+
+
+/*.texte figure {
+	overflow: hidden;                        
+	height: 33vw;
+}*/
+
+/* définir la taille des images avec des border radius personnalisés */
+figure img {
+	width: 39vw;
+	height: 33vw;
+	transition: all 0.5s;
+	border-radius: 100% 0% 100% 0% / 36% 64% 36% 64%;
+}
+
+/* changement du border-radius au survole*/
+.texte figure:hover img {
+	border-radius: 0% 100% 0% 100% / 64% 36% 64% 36% 
+}
+
+article a {
+	color: #a9afb4;
+	transition: all 0.3s;
+}
+
+
+/* dernière partie de l'article */
+
+.contenu li {
+	font-size: 95%;
+	margin:auto;
+	width: 80%;
+	margin-top: 0%;
+	line-height: 1.5rem;
+}
+
+
+.security , .contenu {                        
+	display: grid;									/* le grid s'applique sur les élement de .security et .contenu*/
+	grid-template-columns:1fr 1fr 1fr 1fr;
+	padding-left:0px;
+	list-style-type:none;
+	text-align:center;
+}
+
+.security li {
+	font-size:150%;
+	color: #e2762e;
+	background-position:top;
+	padding-top:3em;
+	background-repeat: no-repeat;             /* eviter la répétition de l'image en background */
+	list-style-type:none;
+}
+
+/* background en image décorative (icônes) des li suivants */
+#meteo {
+	background-image: url(.././img/meteo.png);
+}
+
+#zones {
+	background-image: url(.././img/zone.png);
+}
+
+#connaissance {
+	background-image: url(.././img/connaissance.png);
+}
+
+#materiel {
+	background-image: url(.././img/materiel.png);
+}
+
+
+@media all and (max-width:1100px) { /* premiere modification pour ecran de moins de 1100px*/
+	/*mettre les grid en 1fr uniquement pour la version petit ecran*/
+	article .texte {
+		grid-template-columns: 1fr;
+		justify-items: center;
+	}
+
+	article .texte figure {
+		margin: 0;
+	}
+
+	/* retirer tout les border_radius pour les images à cause de l'absence du hover en mobile*/
+	article figure img {
+		width: 65vw;
+		height: 33vw;
+		border-radius: 0em;
+	}
+
+	article .texte figure img:hover{
+		border-radius: 0em;
+	}
+
+	/* en cache les icones*/
+	.security {
+		display: none;
+	}
+
+
+	.contenu {
+		grid-template-columns: 1fr;
+		gap: 0.5em;
+	}
+
+	.contenu li {
+		border-bottom: 1px solid #0aade2;
+		text-align: left;
+		list-style-type: circle;
+	}
+
+	/* mettre des images avec une résolution adaptée au petit écran */
+	.unplan {
+		background-image: url("../img/unplan_mobile.jpg");
+	}
+
+	.deuxplan {
+		background-image: url("../img/deuxplan_mobile.jpg");
+	}
+
+	.troisplan {
+		background-image: url("../img/troisplan_mobile.jpg");
+	}
+}

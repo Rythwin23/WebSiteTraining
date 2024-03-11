@@ -1,0 +1,160 @@
+body {
+	margin: 0;
+}
+
+main {
+	font-family: tahoma ,sans-serif;
+}
+
+
+.menubox, .toggle {
+	display: none;
+}
+
+nav ul {
+	display:flex;
+	margin:0;
+	height: 4em;
+	padding-left:2em;
+	list-style-type: none;
+	align-items: center;
+	gap: 2.5em;
+}
+
+nav ul li {
+	text-align: left;
+}
+
+nav ul li a {
+	display: block;
+	font-size: 105%;
+	position: relative;
+	color: white;
+	text-decoration: none;
+	padding: 0.3em 1em;
+	transition: all 0.8s;
+}
+
+nav ul li a::after {
+	content: "";
+	position: absolute;
+	background-color: #0aade2;
+	height: 3px;
+	width: 0%;
+	left: 0;
+	bottom: -1px;
+	transition: all 0.8s;
+}
+
+nav ul li a:hover {
+	color: #0aade2;
+
+}
+
+nav ul li a:hover::after {
+	width: 95%;
+}
+
+footer {
+	display: grid;
+	grid-template-columns:1fr 1fr;
+	margin:0px;
+	padding-top: 1em;
+	background: rgb(2, 34, 45);
+}
+
+/* séparer les élements ul ligne par ligne avec le grid */
+footer ul {
+	display: grid;
+	grid-template-rows:2em 2em 2em 2em;
+	list-style-type:none;
+}
+
+/* mettre la classe source à droite de la page et afficher le border-left pour séparer le footer en deux */
+footer .source {
+	justify-content:right;
+	text-align:right;
+	border-left:1px solid;
+	padding-right:3em;
+}
+
+/* imposer une transition d'état des liens dans le footer avec un délai de 300ms */
+footer ul, footer ul a {
+	color:white;
+	text-decoration:none;
+	transition: all 0.3s;
+}
+
+
+article a:hover, footer a:hover {
+	color: #e2762e;
+	text-decoration:underline;
+	font-size: 102%;
+}
+
+
+@media all and (max-width:900px) {
+	header h1 {
+		display: block;
+		margin-top: 0;
+		font-size: 200%;
+	}
+
+	/* affichage de la boite input ( personnalisé avec ce caractère ≡ ) qui sert à afficher le menu de navigation */
+	.toggle {
+		display: block;
+		font-size: 300%;
+		cursor: pointer;
+		color: white;
+		padding-right: 0em;
+		width: max-content;
+		position: fixed;
+	}
+
+	/* afficher la barre de menu lors du check*/
+	.menubox:checked ~ .toggle {
+		background-color: rgb(2, 34, 45);
+		padding-right: 4.27em;
+	}
+
+	/*afficher le menu de navigation au check*/
+	.menubox:checked ~ nav {
+		width: 15em;
+		background-color: rgb(2, 34, 45);
+	}
+
+	/* en cache l'element nav avant le check */
+	nav {
+		position: fixed;
+		overflow: hidden;
+		width: 0em;
+		height: 19em;
+		margin-top: 3.6em;
+	}
+
+	nav ul {
+		display: grid;
+		grid-template-rows: 1.5em 1.5em 1.5em 1.5em 1.5em;
+		padding: 0em;
+	}
+	
+
+	footer {
+		grid-template-columns: 1fr;
+	}
+
+	footer .information, footer .source {
+		grid-template-columns: 1fr;
+		border: 0px solid;
+	}
+
+	/* changer la position de la classe information*/
+	footer .information {
+		order: 2;
+	}
+
+	footer ul li {
+		text-align: left;
+	}
+
+}

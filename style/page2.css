@@ -1,0 +1,127 @@
+/* une image fixé en background pour l'effet glissant */
+body {
+    background-image: url("../img/wallpaperflare-cropped.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    height: 50vh;
+    margin: 0%;
+}
+
+/* position fixed pour l'accessibilité */
+.menu {
+    background-color: rgb(2, 34, 45);
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+
+article {
+    line-height: 1.9rem;                                  /* changer l'espace entre les lignes*/
+    position: relative;                                   /* position relative pour pouvoir faire un effet de bordure avec le :before */
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 3px solid rgb(2, 34, 45);
+    width: 95%;
+    margin: auto;
+    margin-bottom: 1em;
+}
+
+article h2 {
+    text-align: center;
+    color: #e2762e;
+    font-size: 180%;
+    margin: 1em;
+}
+
+article h3 {
+    color: #e2762e;
+}
+
+/* personnalisé la première lettre du premier paragraphe*/
+article section p:first-of-type:first-letter {
+    font-size: 180%;
+    color: #e2762e;
+}
+
+/* faire une bordure personnalisée à l'article */
+article:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-top: 50px solid rgb(2, 34, 45);
+    border-left: 50px solid transparent;
+    width: 0;
+}
+
+article .simple {
+    padding: 0em 3em;
+    background-color:white;
+}
+
+
+article .composee {
+    display: flex;
+    padding: 3em 0em;
+    background-color:white;
+    align-items: center;
+    gap:1em;
+}
+
+
+
+article section .partietext {
+    background-color: rgb(2, 34, 45);
+    box-shadow: 5px 10px 10px 5px grey;
+    padding:0em 2em;
+    min-height: 30vw;                                   /* bloquer la valeur minimal de l'element */
+    margin: -2%;                                        /* ajouter de la marge sur les bord vers l'exterieur */
+    color: white;
+}
+
+
+/* .zoom une boite qui contient une image, on bloque sa taille pour pouvoir zoomer sur l'image sans la faire ressortir */
+article section .zoom{
+    width: 35vw;
+    height: 29vw;
+    overflow: hidden;
+    box-shadow: 5px 10px 10px 5px rgb(2, 34, 45, 0.5);
+}
+
+/* l'image va prendre la totalité de la taille de son parent*/
+article section img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+/* augmenter la taille de l'image lors du sorvole de son parent qui a une taille bloquer, donc ceci faire un effet de zoom*/
+article section .zoom:hover img {
+    transform: scale(1.06);
+}
+
+@media all and (max-width:900px){
+    /* mettre une image avec des résolution adaptées à des petits écrans*/
+    body {
+        background-image: url("../img/banniere_mobile.jpg");
+    }
+
+    article .composee {
+		display: grid;
+        grid-template-columns: 1fr;
+	}
+
+	article .composee .zoom {
+		margin:auto;
+		width: 65vw;
+		height: 40vw;
+	}
+
+    article .composee .last {
+        order:2;
+    }
+}
